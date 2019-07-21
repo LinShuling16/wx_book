@@ -1,0 +1,27 @@
+<!--pages/book/book.wxml-->
+
+<!-- 为wx:for 的item指定别名 -->
+<!-- <block wx:for="{{books}}" wx:for-item="book">
+  <v-book book="{{book}}"/>
+</block> -->
+
+<view class="container" wx:if="{{!searching}}">
+  <view class="header">
+    <view class="box" bind:tap="onSearching">
+      <image src="/images/icon/search.png"></image>
+      <text>搜索书籍</text>
+    </view>
+  </view>
+
+  <view class="sub-container">
+    <image class="head-img" src="/images/book/quality.png" />
+    <view class="books-container">
+      <block wx:for="{{books}}" wx:key="{{id}}">
+        <v-book bind:onTap="onTap" book="{{item}}"/>
+      </block>
+    </view>
+  </view>
+</view>
+
+
+<v-search more="{{more}}" bind:cancel="onCancel" wx:if="{{searching}}"/>
